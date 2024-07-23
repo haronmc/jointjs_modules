@@ -56,12 +56,3 @@ export default class Command {
     return this;
   }
 }
-
-const commandKits = new Command("kits")
-  .onExecute((executor) => {
-    //if (executor.hasPermission("popa"))
-  })
-  .onTab(() => {
-    return false;
-  })
-  .register();

@@ -21,12 +21,12 @@ interface FetchResponse {
   json: () => Promise<any>;
 }
 
-function fetch(url: string, options?: FetchOptions): Promise<FetchResponse> {
-  const URL = Java.type('java.net.URL');
-  const BufferedReader = Java.type('java.io.BufferedReader');
-  const InputStreamReader = Java.type('java.io.InputStreamReader');
-  const DataOutputStream = Java.type('java.io.DataOutputStream');
+const URL = Java.type('java.net.URL');
+const BufferedReader = Java.type('java.io.BufferedReader');
+const InputStreamReader = Java.type('java.io.InputStreamReader');
+const DataOutputStream = Java.type('java.io.DataOutputStream');
 
+function fetch(url: string, options?: FetchOptions): Promise<FetchResponse> {
   return new Promise((resolve, reject) => {
     try {
       const method = options && options.method || "GET";

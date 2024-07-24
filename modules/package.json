@@ -1,0 +1,24 @@
+{
+  "name": "@joint-js/modules",
+  "version": "1.0.2",
+  "description": "Adds abstract functions/classes to share with JointJS",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haronmc/jointjs_modules.git"
+  },
+  "keywords": [
+    "minecraft",
+    "ts",
+    "js",
+    "java"
+  ],
+  "author": "smokingplaya",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/haronmc/jointjs_modules/issues"
+  },
+  "homepage": "https://github.com/haronmc/jointjs_modules#readme"
+}

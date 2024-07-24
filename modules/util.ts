@@ -7,7 +7,7 @@
 
 /**
  * dumpObject
- * * displays object content in your console
+ * displays object content in your console
  * @param obj Object
  */
 export function dumpObject(obj: Object) {

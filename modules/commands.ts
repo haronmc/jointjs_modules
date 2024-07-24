@@ -7,27 +7,49 @@
 
 // todo @
 
-declare const Java: any;
-
-import {
-  CommandSender
+import Player, {
+  CommandSender,
 } from "./minecraftevent";
 
-type executorCallback = (sender: CommandSender, cmd: Object, label: string, args: string[]) => any;
+declare const addCommand: (command: Command) => {};
+
+type executorCallback = (sender: CommandSender, args: string[]) => any;
 type tabCallback = () => any;
 
 export default class Command {
-  private arguments: string[] = [];
-  private isJointJSCommand: boolean = false;
+  private msg: string = "§a§l| §f%s";
+  private description: string = "";
+  private usage: string = "";
+  private arguments: Argument[] = [];
+  private executor: executorCallback = () => { };
+  private tab: tabCallback = () => { };
   private commandName: string;
-  private executor: executorCallback;
-  private tab: tabCallback;
+  private permission: string;
 
-  constructor(commandName: string) {
+  constructor(commandName: string, permission: string) {
     this.commandName = commandName;
+    this.permission = permission;
   }
 
-  setArguments(...args): this {
+  setMessage(message: string): this {
+    this.msg = message;
+
+    return this;
+  }
+
+  setDescription(desc: string): this {
+    this.description = desc;
+
+    return this;
+  }
+
+  setUsage(usage: string): this {
+    this.usage = usage;
+
+    return this;
+  }
+
+  setArguments(args: Argument[]): this {
     this.arguments = args;
 
     return this;
@@ -45,14 +67,29 @@ export default class Command {
     return this;
   }
 
-  setJointJSCommand(state: boolean = true): this {
-    this.isJointJSCommand = state;
+  sendMessage(player: CommandSender, message: string) {
+    let msg = this.msg.replace("%s", message);
+    player.sendMessage(msg);
+  }
+
+  register(): this | void {
+    if (!this.permission)
+      return console.log("The \“permission\” field is not specified");
+
+    addCommand(this);
 
     return this;
   }
+}
 
-  register(): this {
-    // todo @
-    return this;
+export class Argument {
+  private name: string;
+  private isOptional: boolean = false;
+
+  constructor(name: string, isOptional?: boolean) {
+    this.name = name;
+
+    if (isOptional)
+      this.isOptional = isOptional;
   }
 }

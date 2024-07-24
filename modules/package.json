@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
   "name": "@joint-js/modules",
   "version": "1.0.2",
+=======
+  "name": "@jointjs/modules",
+  "version": "1.0.1",
+>>>>>>> 2418f9ce3bff951b690f555ae982f6bbdb2db282
   "description": "Adds abstract functions/classes to share with JointJS",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
